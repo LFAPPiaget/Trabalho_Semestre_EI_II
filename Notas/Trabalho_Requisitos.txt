@@ -1,0 +1,152 @@
+Engenharia de Sofware 
+
+===================
+Problema :
+===================
+Um grande volume da faturação dos serviços chega aos serviços centrais via a aplicação FE AP, devido a imposição legal.
+
+No entanto essa faturação terá que ser remetida para os s<erviços que originaram a despesa para que a mesma seja registada no sistema GIS e exportada depois de todas as validações executadas para o sistema GERFIP onde a faturação sera paga.
+
+A remessa da documentação esta neste momento a ser remetida manualmente (via email)  por um funcionario apos extração da documentação do portal FE AP atraves de um documento excel e os respectivos documentos PDF(s) associados relativos ás faturas emitidas pelo fornecedor.
+
+A remessa do documento e feita apos  validação do funcionario que é executada atraves da visualização do PDF onde atraves dos seus detalhes o funcionario consegue com maior ou menor dificuldade perceber qual o serviço a que respeita a faturação.
+
+Este processo não so é pouco eficiente, como tambem ocupa um funcionario para uma tarefa de pouco valor acrescentado para os serviço.
+
+
+==================================================================================
+Assim pretende-se uma implementação no sistema existente que permita o seguinte :
+===================================================================================
+
+REQUISITOS : 
+=====================
+
+ATOR SISTEMA :
+===========================
+* Rececionar os documentos PDF extraidos do sistema FE AP para o GIS.
+* Consiga categorizar o documento atraves de uma analise ao seu conteudo associando os documentos ao respetivo Serviço.
+* A Documentação não passivel de categorização pelo sistema automaticamente, deve ser sinalizada e permitir que esses documentos sejam categorizados manualmente e remetidos para os serviços.
+* Sistema deve prevenir de duplicação de importação de documentos PDF ja importados
+* Gerar alerta aos serviços que tem faturas para validar e integrar no sistema de faturação (Mail a remeter no final do dia.)
+
+** PS  Categorização ---> Defenir a serviço ao qual as faturas pertencem.
+
+
+ATOR Funcionario GESTÃO CENTRAL :
+========================================
+* Importação do documento para o Sistema
+* Categorizar documentos não passiveis de categorização automatica.
+* Extrair listagens das faturas categorizadas pelo sistema e manualmente por serviço e data
+* Receber alertas e listagens de faturas ainda por integrar no sistema de Faturação apos remessa aos serviços.
+ 
+
+ATOR Funcionario TRIBUNAL :
+===================================
+* Receber Alerta de novas faturas para integrar em sistema
+* Validar documentação e em caso de categorização errada remeter de volta para categorização por parte dos serviços centrais
+
+
+Documentação de Suporte :
+(PDFS DE Exemplo)
+
+
+===================
+CENARIO 1 :
+===================
+Introdução de Documentação
+===============================
+Utilizador indica pasta onde estão os documentos a importar (Extensão PDF) atraves de formulario.
+Sistema aceita documentos PDF e importa os mesmos para o sistema de categorização.
+
+===================
+CENARIO 2 :
+===================
+Categorização do documento
+===============================
+Sistema analisa PDF atraves de ferramentas de OCR e outros (a definir)
+Na analise tenta apanhar palavras-chave que possam indenticar a que serviço pertence o documento 
+se o sistema for bem sucedido remete documentação  serviço, se não marca como não categorizado e remete para caixa de categorização manual que e acedida pelo funcionario dos serviços centrais
+
+===============
+CENARIO 3 
+================
+Validação do documento categorizado
+===================================
+Funcionario do tribunal acede a caixa de consulta de faturas categorizadas, e verifica se as mesmas pertencem ao serviço, integrando as mesmas no sistema de faturação ou rejeitando a categorização por faturas não pertencerem ao serviço
+Ao rejeitar a categorização o funcionario remete os documentos para a gestão central para recategorização manual.
+
+
+============
+CENARIO 4
+================
+Categorização Manual
+=====================
+Funcionario de gestão central acede a caixa de faturas sinalizadas como não categorizadas ou erradamente categorizadas.
+Executa nova categorização do documento agora com recurso a visualização do documento, remete o mesmo para o serviço correspondente, caso não seja categorizavel marca documento e arquiva digitalmente.
+
+
+==========
+CENARIO 5
+=========
+EXTRACAO DE LISTAGENS
+=======================
+Funcionario de Gestão central, acede a formulario proprio onde e possivel tipificar uma consulta para extração de listagem relativamente a faturas categorizadas.
+Listagens iniciais serão as de estado das faturas categorizadas, data, serviço remetidas ou sem categorização.
+Listagem de estado de faturas categorizadas com data de categorização e estado das mesmas se integradas no sistema de faturação ou pendentes no serviço
+
+
+Deve ter acesso a todas as consultas disponiveis para o serviços
+
+Funcionaro de Tribunal :
+Listagem de faturas categorizadas e remetidas ao serviço em determinada data, estado das faturas no serviço em termos de validação e se integradas em sistema de faturação.
+
+
+===========
+Cenario 6
+============
+REMESSA DE ALERTA
+==================
+sistema remete aos serviços diariamente lista de faturas categorizadas e pendentes de validação e integração por parte dos serviços no sistema de faturação
+
+
+########################################
+CLASSES :
+#######################################
+DOCUMENTO (BINARIO)
+CATEGORIZAÇÃO (REGRAS DE NEGOCIO)
+
+
+DGAJ :
+=====================================
+O que remetem :
+
+Elemento  da DGT vai ao FE AP e extraiem a documentação (PDF_Visao Fornecedor, PDF_Visao_FEAP).
+Fatura preferencialmente a integrar no Gis pelos tribunais será a versão FE-AP defenido.
+Nome dos documentos são iguais com diferença de designação do nome do documento que mantem o mesmo numero mas termina com
+"_VISAO_FORNECEDOR", 'VISAO_FEAP'.
+
+TRIBUNAL :
+==============================================
+Que documentação recebem no Tribunal (Facturação Centralizada) :
+==============================================
+(LISBOA) : Carla Silva
+* Recebem Factura do Fornecedor. (Via DGAJ )
+* Em Algumas situações mandam a factura FE-AP E Fornecedor.
+* Colocam no Gis preferencialmente a factura do fornecedor (embora em alguns casos juntos os 2).
+* Não recebem documento Excel da FE AP.
+
+===============================================
+(SANTAREM) : Carla Martins 
+==============================================
+* Recebem faturas por correio electronico.
+* Recebem faturas da FE AP e Fornecedor.
+* Colocam no Gis as faturas de ambos juntando os pdf (Juntam as duas num unico PDF)
+* Não recebem documento excel.
+(* Controlo de duplicados feito manualmente.)
+
+============================================
+(LISBOA OESTE) : Fernando Duarte
+===========================================
+* Recebem as faturas por correio elecronico (Via DGAJ)
+* Recebes as faturas do fornecedor e por vezes as Faturas FE AP  (Adicionam o PDF e juntam os duas)
+* Não remetem documento a excel as faturas.

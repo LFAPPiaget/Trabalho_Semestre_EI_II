@@ -1,0 +1,33 @@
+Entregar um produto.
+Fazer apresentação do produto.
+Parte de teste.
+Verificar requesitos.
+
+
+Entregar o Documento. (23 Dezembro)
+
+1* ESPECIFICAÇÃO DE REQUISITOS
+- Engenharia de Requisitos (Digitalizado) ER
+- Cenario
+- Descrição Alto Nivel do Sistema
+- Documentação Adicional
+
+2* ESPECIFICAÇÃO DO SISTEMA
+- diagrama de classes
+	Especificação de como vieram dos requisitos
+- diagrama de sequencias
+	explicação de como as classes metodos tem origem nos cenarios
+
+3* Implementação de sistema
+	- geração de classes a partir de ferramentas UML
+	- geração de codigo a partir da ferramentas UML
+
+
+>>>>>>>>>>>>>>>>>
+	Requisitos  não funcionais :
+
+Visual studio React 
+React Web
+
+
+

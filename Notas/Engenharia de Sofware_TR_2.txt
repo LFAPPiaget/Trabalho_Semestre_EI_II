@@ -1,0 +1,59 @@
+Engenharia de Sofware
+
+===================
+Problema :
+===================
+Um grande volume da faturação dos serviço chega aos serviços centrais via a aplicação FE AP, devido a imposição legal.
+
+No entanto essa faturação terá que ser remetida para os serviços que originaram a despesa para que a mesma seja registada no sistema GIS e exportada depois de todas as validações executadas para o sistema GERFIP onde a faturação sera paga.
+
+A remessa da documentação esta neste momento a ser remetida manualmente (via email)  por um funcionario apos extração da documentação do portal FE AP atraves de um documento excel e os respectivos documentos PDF(s) associados relativos ás faturas emitidas pelo fornecedor.
+
+A remessa do documento e feita apos  validação do funcionario que é executada atraves da visualização do PDF onde atraves dos seus detalhes o funcionario consegue com maior ou menor dificuldade perceber qual o serviço a que respeita a faturação.
+
+Este processo não so é pouco eficiente, como tambem ocupa um funcionario para uma tarefa de pouco valor acrescentado para os serviços.
+
+==================================================================================
+Assim pretende-se uma implementação no sistema existente que permita o seguinte :
+===================================================================================
+
+REQUISITOS ATORES
+=====================
+
+ATOR SISTEMA :
+===========================
+* Rececionar os documentos PDF extraidos do sistema FE AP para o GIS.
+* Consiga categorizar o documento atraves de uma analise ao seu conteudo associando os documentos ao respetivo Serviço.
+* A Documentação não passivel de categorização pelo sistema automaticamente, deve ser sinalizada e permitir que esses documentos sejam categorizados manualmente e remetidos para os serviços.
+* Sistema deve prevenir de duplicação de importação de documentos PDF ja importados
+* Gerar alerta aos serviços que tem faturas para validar e integrar no sistema de faturação (Mail a remeter no final do dia.)
+ 
+** PS  Categorização ---> Defenir a serviço ao qual as faturas pertencem.
+
+
+ATOR Funcionario GESTÃO CENTRAL :
+========================================
+* Importação do documento para o Sistema
+* Categorizar documentos não passiveis de categorização automatica.
+* Extrair listagens das faturas categorizadas pelo sistema e manualmente por serviço e data
+* Receber alertas e listagens de faturas ainda por integrar no sistema de Faturação apos remessa aos serviços.
+
+
+ATOR Funcionario TRIBUNAL :
+===================================
+* Receber Alerta de novas faturas para integrar em sistema
+* Validar documentação e em caso de categorização errada remeter de volta para categorização por parte dos serviços centrais
+
+
+Documentação de Suporte :
+(PDFS DE Exemplo)
+
+
+
+
+
+
+
+
+
+

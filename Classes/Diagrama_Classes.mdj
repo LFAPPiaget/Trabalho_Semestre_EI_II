@@ -1645,40 +1645,6 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGMO79mVGQgXYw=",
-											"_parent": {
-												"$ref": "AAAAAAGMO7vsRUr+YGk="
-											},
-											"model": {
-												"$ref": "AAAAAAGMO79mSWQXh2U="
-											},
-											"font": "Arial;13;0",
-											"left": 925,
-											"top": 604,
-											"width": 239,
-											"height": 13,
-											"text": "+idorcamento",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGMO8At0mmwwxc=",
-											"_parent": {
-												"$ref": "AAAAAAGMO7vsRUr+YGk="
-											},
-											"model": {
-												"$ref": "AAAAAAGMO8AtxmmnZmA="
-											},
-											"font": "Arial;13;0",
-											"left": 925,
-											"top": 619,
-											"width": 239,
-											"height": 13,
-											"text": "+idCompromisso",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAGMO8CKuWyBAVk=",
 											"_parent": {
 												"$ref": "AAAAAAGMO7vsRUr+YGk="
@@ -1688,10 +1654,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 925,
-											"top": 634,
+											"top": 604,
 											"width": 239,
 											"height": 13,
-											"text": "+idFacturaintegrada",
+											"text": "+idFactura",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1705,7 +1671,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 925,
-											"top": 649,
+											"top": 619,
 											"width": 239,
 											"height": 13,
 											"text": "+tiEstadoIntegracao",
@@ -1722,10 +1688,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 925,
-											"top": 664,
+											"top": 634,
 											"width": 239,
 											"height": 13,
-											"text": "+dtregisto",
+											"text": "+dtRegisto",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1739,10 +1705,44 @@
 											},
 											"font": "Arial;13;0",
 											"left": 925,
-											"top": 679,
+											"top": 649,
 											"width": 239,
 											"height": 13,
 											"text": "+idLogin",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGMxl3ssy36fRo=",
+											"_parent": {
+												"$ref": "AAAAAAGMO7vsRUr+YGk="
+											},
+											"model": {
+												"$ref": "AAAAAAGMxl3spS33vb8="
+											},
+											"font": "Arial;13;0",
+											"left": 925,
+											"top": 664,
+											"width": 239,
+											"height": 13,
+											"text": "+dtAlterEstado",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGMxl4WUy7rB9Y=",
+											"_parent": {
+												"$ref": "AAAAAAGMO7vsRUr+YGk="
+											},
+											"model": {
+												"$ref": "AAAAAAGMxl4WTS7ovqg="
+											},
+											"font": "Arial;13;0",
+											"left": 925,
+											"top": 679,
+											"width": 239,
+											"height": 13,
+											"text": "+idLoginAlterEstado",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5056,30 +5056,11 @@
 						},
 						{
 							"_type": "UMLAttribute",
-							"_id": "AAAAAAGMO79mSWQXh2U=",
-							"_parent": {
-								"$ref": "AAAAAAGMO7vsREr27mM="
-							},
-							"name": "idorcamento",
-							"type": ""
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGMO8AtxmmnZmA=",
-							"_parent": {
-								"$ref": "AAAAAAGMO7vsREr27mM="
-							},
-							"name": "idCompromisso",
-							"type": ""
-						},
-						{
-							"_type": "UMLAttribute",
 							"_id": "AAAAAAGMO8CKs2x4bCg=",
 							"_parent": {
 								"$ref": "AAAAAAGMO7vsREr27mM="
 							},
-							"name": "idFacturaintegrada",
-							"type": ""
+							"name": "idFactura"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5096,8 +5077,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGMO7vsREr27mM="
 							},
-							"name": "dtregisto",
-							"type": ""
+							"name": "dtRegisto"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5107,6 +5087,22 @@
 							},
 							"name": "idLogin",
 							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGMxl3spS33vb8=",
+							"_parent": {
+								"$ref": "AAAAAAGMO7vsREr27mM="
+							},
+							"name": "dtAlterEstado"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGMxl4WTS7ovqg=",
+							"_parent": {
+								"$ref": "AAAAAAGMO7vsREr27mM="
+							},
+							"name": "idLoginAlterEstado"
 						}
 					],
 					"operations": [
